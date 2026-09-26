@@ -83,31 +83,6 @@ export default function About() {
             engineering best practices, with a strong focus on writing clean and maintainable code.
           </p>
 
-          {/* Stats Row */}
-          <div className="about-stats">
-            {[
-              { num: '2+', label: 'Live Projects' },
-              { num: '10+', label: 'Technologies' },
-              { num: '100%', label: 'Commitment' },
-            ].map(s => (
-              <div key={s.label} style={{
-                background: '#111111',
-                border: '1px solid #2a2a2a',
-                borderRadius: 10, padding: '1.25rem',
-                textAlign: 'center'
-              }}>
-                <div style={{
-                  fontSize: 'clamp(1.4rem, 3vw, 1.75rem)',
-                  fontWeight: 800, color: '#00f5a0',
-                  letterSpacing: '-0.02em', marginBottom: '0.25rem'
-                }}>{s.num}</div>
-                <div style={{
-                  fontSize: '0.75rem', color: '#888888', fontWeight: 500
-                }}>{s.label}</div>
-              </div>
-            ))}
-          </div>
-
           {/* CTA */}
           <a href="#contact"
             onClick={e => {
@@ -199,13 +174,6 @@ export default function About() {
           align-items: start;
         }
 
-        .about-stats {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 1rem;
-          margin-bottom: 2.5rem;
-        }
-
         .about-cta {
           width: fit-content;
         }
@@ -233,11 +201,6 @@ export default function About() {
         @media (max-width: 480px) {
           section#about {
             padding: 4rem 1.25rem;
-          }
-
-          .about-stats {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.65rem;
           }
 
           .about-cta {

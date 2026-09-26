@@ -4,50 +4,57 @@ const projects = [
   {
     badge: 'LIVE',
     badgeColor: '#22c55e',
-    title: 'E-Commerce Platform',
-    client: 'Personal Project • 2024',
-    desc: 'A full stack e-commerce web application with product listings, shopping cart, user authentication and a clean modern UI.',
+    title: 'Amana',
+    client: 'Top Project • 2025',
+    image: '/projects/amana.png',
+    problem: 'Finding a skilled, trustworthy artisan — a plumber, carpenter, electrician — is mostly guesswork built on word of mouth.',
+    approach: 'Built a two-sided marketplace where artisans create full profiles with photos and videos of past work, customers search and message them directly, and an admin dashboard keeps the whole platform running.',
+    result: 'Live and onboarding artisans starting in Kano, Nigeria — connecting real customers with verified, skilled workers.',
     metrics: [
-      { label: 'Frontend', value: 'React.js' },
-      { label: 'Backend', value: 'Node.js' },
-      { label: 'Database', value: 'MongoDB' },
+      { label: 'Frontend', value: 'Next.js' },
+      { label: 'Backend', value: 'Next.js' },
+      { label: 'Hosting', value: 'Vercel + Render' },
     ],
-    tags: ['React', 'Node.js', 'Express', 'MongoDB'],
-    demo: 'https://ecommerce-frontend-cvs.vercel.app',
-    github: 'https://github.com/MSAdam2001',
+    tags: ['Next.js', 'React', 'Node.js', 'Render'],
+    demo: 'https://amana-frontend-five.vercel.app/',
+    github: 'https://github.com/Muajeedsaid',
     comingSoon: false
   },
   {
     badge: 'LIVE',
     badgeColor: '#22c55e',
-    title: 'Attendance System',
-    client: 'Personal Project • 2024',
-    desc: 'A web-based attendance management system that tracks student and employee attendance with an easy-to-use form interface.',
-    metrics: [
-      { label: 'Type', value: 'Web App' },
-      { label: 'Stack', value: 'JS + Node' },
-      { label: 'Status', value: 'Active' },
-    ],
-    tags: ['HTML', 'CSS', 'JavaScript', 'Node.js'],
-    demo: 'https://attendance-system-pvc5.vercel.app',
-    github: 'https://github.com/MSAdam2001',
-    comingSoon: false
-  },
-  {
-    badge: 'IN PROGRESS',
-    badgeColor: '#f59e0b',
-    title: 'School Management System',
-    client: 'Personal Project • 2025',
-    desc: 'A full featured school management system with student records, grades, attendance tracking and a complete admin dashboard.',
+    title: 'Nigeria Pulse',
+    client: 'Top Project • 2025',
+    image: '/projects/nigeria-pulse.png',
+    problem: "Nigeria's news moves fast across dozens of outlets — politics, economy, security, society — and following it all in real time is overwhelming.",
+    approach: 'Built an AI-powered intelligence dashboard that continuously pulls and analyzes signals across sources, using the Claude API to surface what\'s trending with an intensity score for each topic.',
+    result: 'Live and updating in real time — currently tracking 351+ signals across 23+ sources, 20 global alerts, and 32 social signals.',
     metrics: [
       { label: 'Frontend', value: 'Next.js' },
       { label: 'Backend', value: 'Node.js' },
-      { label: 'Status', value: 'Building' },
+      { label: 'AI', value: 'Claude API' },
     ],
-    tags: ['Next.js', 'Node.js', 'MongoDB', 'Express'],
-    demo: '#',
-    github: '#',
-    comingSoon: true
+    tags: ['Next.js', 'React', 'Node.js', 'Claude AI'],
+    demo: 'https://www.nigeriapulse.site/',
+    github: 'https://github.com/Muajeedsaid',
+    comingSoon: false
+  },
+]
+
+const moreProjects = [
+  {
+    title: 'ShopZone',
+    image: '/projects/shopzone.png',
+    desc: 'A full-stack e-commerce app with product listings, cart, and backend/database integration end to end.',
+    tags: ['Next.js', 'NestJS', 'MongoDB'],
+    demo: 'https://shopzone-frontend-flame.vercel.app',
+  },
+  {
+    title: 'Attendance System',
+    image: '/projects/attendance.png',
+    desc: 'Digitizes attendance collection for lecturers — session creation, student submission, and semester record exports.',
+    tags: ['Next.js', 'MongoDB', 'Auth'],
+    demo: 'https://attendance-system-wine-one.vercel.app',
   },
 ]
 
@@ -89,7 +96,7 @@ export default function Projects() {
         </p>
       </div>
 
-      {/* Projects Grid */}
+      {/* Featured Projects Grid */}
       <div className="projects-grid">
         {projects.map(p => (
           <div key={p.title} className="project-card" style={{
@@ -109,6 +116,25 @@ export default function Projects() {
               e.currentTarget.style.boxShadow = 'none'
             }}
           >
+            {/* Screenshot */}
+            <div style={{
+              width: '100%', height: 200,
+              overflow: 'hidden',
+              borderBottom: '1px solid #2a2a2a',
+              background: '#1a1a1a'
+            }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={p.image}
+                alt={`${p.title} screenshot`}
+                style={{
+                  width: '100%', height: '100%',
+                  objectFit: 'cover', objectPosition: 'top',
+                  display: 'block'
+                }}
+              />
+            </div>
+
             <div style={{ padding: '1.75rem' }}>
 
               {/* Top Row — Client + Badge */}
@@ -134,14 +160,21 @@ export default function Projects() {
               <h3 style={{
                 fontSize: 'clamp(1rem, 2.5vw, 1.2rem)',
                 fontWeight: 800, color: '#ffffff',
-                marginBottom: '0.75rem', letterSpacing: '-0.01em'
+                marginBottom: '1rem', letterSpacing: '-0.01em'
               }}>{p.title}</h3>
 
-              {/* Description */}
-              <p style={{
-                fontSize: '0.85rem', color: '#888888',
-                lineHeight: 1.7, marginBottom: '1.5rem'
-              }}>{p.desc}</p>
+              {/* Problem → Approach → Result */}
+              <div style={{ marginBottom: '1.5rem' }}>
+                <p style={{ fontSize: '0.85rem', color: '#888888', lineHeight: 1.7, marginBottom: '0.75rem' }}>
+                  <strong style={{ color: '#e5e5e5' }}>Problem: </strong>{p.problem}
+                </p>
+                <p style={{ fontSize: '0.85rem', color: '#888888', lineHeight: 1.7, marginBottom: '0.75rem' }}>
+                  <strong style={{ color: '#e5e5e5' }}>Approach: </strong>{p.approach}
+                </p>
+                <p style={{ fontSize: '0.85rem', color: '#888888', lineHeight: 1.7 }}>
+                  <strong style={{ color: '#00f5a0' }}>Result: </strong>{p.result}
+                </p>
+              </div>
 
               {/* Metrics */}
               <div style={{
@@ -232,24 +265,99 @@ export default function Projects() {
         ))}
       </div>
 
+      {/* More Projects — compact row */}
+      <div style={{ marginTop: '4rem' }}>
+        <h3 style={{
+          fontSize: '1.1rem', fontWeight: 700, color: '#ffffff',
+          marginBottom: '1.25rem', letterSpacing: '-0.01em'
+        }}>More Projects</h3>
+
+        <div className="more-projects-grid">
+          {moreProjects.map(p => (
+            <a key={p.title} href={p.demo} target="_blank" rel="noreferrer"
+              className="more-project-card"
+              style={{
+                background: '#111111',
+                border: '1px solid #2a2a2a',
+                borderRadius: 12, overflow: 'hidden',
+                textDecoration: 'none', display: 'flex',
+                alignItems: 'stretch',
+                transition: 'all 0.25s'
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.borderColor = '#3b82f6'
+                e.currentTarget.style.transform = 'translateY(-4px)'
+                e.currentTarget.style.boxShadow = '0 8px 30px rgba(59,130,246,0.15)'
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.borderColor = '#2a2a2a'
+                e.currentTarget.style.transform = 'translateY(0)'
+                e.currentTarget.style.boxShadow = 'none'
+              }}
+            >
+              {/* Thumbnail */}
+              <div style={{
+                width: 110, flexShrink: 0,
+                borderRight: '1px solid #2a2a2a',
+                overflow: 'hidden', background: '#1a1a1a'
+              }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={p.image}
+                  alt={`${p.title} screenshot`}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                />
+              </div>
+
+              <div style={{ padding: '1.25rem 1.4rem', flex: 1, minWidth: 0 }}>
+                <div style={{
+                  display: 'flex', justifyContent: 'space-between',
+                  alignItems: 'center', marginBottom: '0.6rem'
+                }}>
+                  <h4 style={{ fontSize: '1rem', fontWeight: 800, color: '#ffffff', letterSpacing: '-0.01em' }}>{p.title}</h4>
+                  <span style={{ fontSize: '0.8rem', color: '#3b82f6', flexShrink: 0 }}>🔗</span>
+                </div>
+                <p style={{ fontSize: '0.85rem', color: '#888888', lineHeight: 1.7, marginBottom: '0.85rem' }}>
+                  {p.desc}
+                </p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
+                  {p.tags.map(tag => (
+                    <span key={tag} style={{
+                      background: 'rgba(0,245,160,0.06)',
+                      border: '1px solid rgba(0,245,160,0.15)',
+                      color: '#00f5a0', fontSize: '0.72rem',
+                      fontWeight: 500, padding: '0.25rem 0.65rem',
+                      borderRadius: 100
+                    }}>{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+
       <style>{`
-        /* Desktop */
+        /* Desktop — 2 columns, since we have 2 featured case studies */
         .projects-grid {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 1.5rem;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1.75rem;
         }
 
-        /* Tablet */
-        @media (max-width: 900px) {
-          .projects-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
+        .more-projects-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1rem;
         }
 
         /* Mobile */
-        @media (max-width: 600px) {
+        @media (max-width: 700px) {
           .projects-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .more-projects-grid {
             grid-template-columns: 1fr;
           }
 
